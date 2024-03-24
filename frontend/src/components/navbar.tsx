@@ -114,7 +114,7 @@ function Navbar() {
 									size="xl"
 								/>
 							</SheetTrigger>
-							<SheetContent className="h-[250px] w-[200px] rounded-bl-lg">
+							<SheetContent className="h-[210px] w-[200px] rounded-bl-lg">
 								<SheetHeader>
 									<SheetTitle>YakinKerja</SheetTitle>
 									<SheetDescription>

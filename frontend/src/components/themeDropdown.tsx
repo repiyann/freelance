@@ -65,7 +65,7 @@ function ThemeDropdown({ options, onSelect, className, defaultOption }: themeDro
 					{options.map((option, index) => (
 						<div
 							key={index}
-							className='dark:hover:bg-[#333333] hover:bg-[#d3d3d3] rounded-lg'
+							className="dark:hover:bg-[#333333] hover:bg-[#d3d3d3] rounded-lg"
 						>
 							<button
 								onClick={() => {
