@@ -52,7 +52,7 @@ function Home() {
 							/>
 							<button
 								type="submit"
-								className="absolute bg-[#264480] pt-[14px] px-4 right-0 top-0 rounded-r-lg"
+								className="absolute bg-[#264480] pt-[13px] px-4 -right-[2px] top-0 rounded-r-lg"
 							>
 								<FontAwesomeIcon
 									icon={faSearch}
@@ -119,7 +119,7 @@ function Home() {
 													alt={`Image ${index + 1}`}
 													className="w-full h-full object-cover"
 												/>
-												<h6 className="my-4 font-semibold">{image.description}</h6>
+												<h5 className="my-4 text-xl font-semibold">{image.description}</h5>
 											</CardContent>
 										</Card>
 									</div>

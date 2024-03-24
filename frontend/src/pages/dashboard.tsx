@@ -16,6 +16,7 @@ function Dashboard() {
 	useEffect(() => {
 		imageLoaded && setLoading(false)
 	}, [imageLoaded])
+  
 	return (
 		<>
 			{loading && <Spinner />}

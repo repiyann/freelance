@@ -54,23 +54,6 @@ function NavbarUser() {
 							alt="logo YakinKerja"
 						/>
 					</a>
-					{/* <div className="md:flex">
-						<input
-							type="text"
-							className="bg-[#3333] rounded-md w-[700px] px-3"
-              placeholder='What service are you looking for?'
-						/>
-            <button
-								type="submit"
-								className="absolute bg-[#264480] pt-[14px] px-4 right-0 top-0 rounded-r-lg"
-							>
-								<FontAwesomeIcon
-									icon={faSearch}
-									className="mb-3"
-									style={{ color: '#f2f2f2' }}
-								/>
-							</button>
-					</div> */}
           <div className="relative pt-[2px]">
 							<input
 								type="text"
