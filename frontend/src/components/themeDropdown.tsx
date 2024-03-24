@@ -71,11 +71,11 @@ function ThemeDropdown({ options, onSelect, className, defaultOption }: themeDro
 								onClick={() => {
 									handleOptionClick(option)
 								}}
-								className="px-4 text-black dark:text-white"
+								className="px-4 text-black flex dark:text-white"
 								disabled={selectedOption === option}
 							>
 								<FontAwesomeIcon
-									className={option === 'Dark' ? 'pr-2 pl-1' : 'pr-2'}
+									className={`pt-1 ${option === 'Dark' ? 'pr-2 pl-1' : 'pr-2'}`}
 									icon={option === 'Dark' ? faMoon : option === 'Light' ? faSun : faDisplay}
 								/>
 								{option}

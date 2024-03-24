@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+	SheetClose
+} from '@/components/ui/sheet'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/utils/useTheme.tsx'
 import Dropdown from './themeDropdown.tsx'
-import HamburgerMenu from './hamburger.tsx'
 import logoDark from '/images/logo-dark.svg'
 import logoLight from '/images/logo-light.svg'
 import logoMobileLight from '/images/logoMobile-light.svg'
@@ -39,7 +49,7 @@ function Navbar() {
 
 	return (
 		<>
-			<nav className="pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] shadow-lg dark:shadow-gray-900 sticky top-0 z-[1000]">
+			<nav className="pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] shadow-lg dark:shadow-gray-900 sticky top-0 z-50">
 				<div className="flex justify-between pb-3 md:p-0">
 					<a
 						onClick={scrollToHome}
@@ -88,8 +98,58 @@ function Navbar() {
 							</Link>
 						</div>
 					</div>
-					<div className='md:hidden'>
-						<HamburgerMenu />
+					<div className="md:hidden flex">
+						<div className='pr-3 mt-[3px]'>
+							<Dropdown
+								options={['Light', 'Dark', 'System']}
+								onSelect={handleThemeSelect}
+								className="px-3"
+								defaultOption={theme}
+							/>
+						</div>
+						<Sheet>
+							<SheetTrigger>
+								<FontAwesomeIcon
+									icon={faBars}
+									size="xl"
+								/>
+							</SheetTrigger>
+							<SheetContent className="h-[250px] w-[200px]">
+								<SheetHeader>
+									<SheetTitle>YakinKerja</SheetTitle>
+									<SheetDescription>
+										<SheetClose>
+											<a
+												className="text-lg"
+												onClick={scrollToHome}
+											>
+												Home
+											</a>
+										</SheetClose>
+									</SheetDescription>
+									<SheetDescription>
+										<SheetClose>
+											<a
+												className="text-lg"
+												onClick={scrollToAbout}
+											>
+												About
+											</a>
+										</SheetClose>
+									</SheetDescription>
+									<SheetDescription>
+										<Link to={'/login'}>
+											<p className="text-lg cursor-pointer hover:text-[#6986C2] dark:hover:text-[#6986C2]">Sign In</p>
+										</Link>
+									</SheetDescription>
+									<SheetDescription>
+										<Link to={'/register'}>
+											<p className="text-lg cursor-pointer hover:text-[#6986C2] dark:hover:text-[#6986C2]">Sign Up</p>
+										</Link>
+									</SheetDescription>
+								</SheetHeader>
+							</SheetContent>
+						</Sheet>
 					</div>
 				</div>
 			</nav>
