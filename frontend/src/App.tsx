@@ -20,7 +20,7 @@ function App() {
 				element={<LoginPage />}
 			/>
 			<Route
-				path="/"
+				path="/dashboard"
 				element={<Dashboard />}
 			/>
 		</Routes>
