@@ -34,8 +34,8 @@ function Navbar() {
 	}, [])
 
 	function handleThemeSelect(option: string) {
-		option = option.toLowerCase()
-		;(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
+		option = option.toLowerCase();
+		(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
 	}
 
 	function scrollToHome() {
@@ -99,7 +99,7 @@ function Navbar() {
 						</div>
 					</div>
 					<div className="md:hidden flex">
-						<div className='pr-3 mt-[3px]'>
+						<div className="pr-3 mt-[3px]">
 							<Dropdown
 								options={['Light', 'Dark', 'System']}
 								onSelect={handleThemeSelect}
@@ -114,7 +114,7 @@ function Navbar() {
 									size="xl"
 								/>
 							</SheetTrigger>
-							<SheetContent className="h-[250px] w-[200px]">
+							<SheetContent className="h-[250px] w-[200px] rounded-bl-lg">
 								<SheetHeader>
 									<SheetTitle>YakinKerja</SheetTitle>
 									<SheetDescription>
