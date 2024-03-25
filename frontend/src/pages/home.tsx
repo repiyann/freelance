@@ -12,6 +12,7 @@ import designer from '/images/Designer-bro.svg'
 import writer from '/images/Novelist-bro.svg'
 import video from '/images/Video-bro.svg'
 import threeD from '/images/3d-bro.svg'
+import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 function Home() {
 	const imagesWithDescriptions = [
@@ -163,17 +164,30 @@ function Home() {
 
 			<section id="footer">
 				<div className="py-5 bg-[#6986C2] dark:bg-[#264480]">
+					<div className="flex flex-col justify-center items-center">
+						<h1 className="font-bold text-2xl">YakinKerja</h1>
+						<h3 className='w-[750px] text-center py-3'>
+							YakinKerja is a website that makes you get the best experience in transactions as a freelance and user.
+							Organised in such a way with innovation and interesting features.
+						</h3>
+					</div>
+					<div className="flex justify-center items-center pb-2">
+						<FontAwesomeIcon icon={faFacebook} size='2xl' className='px-2' />
+						<FontAwesomeIcon icon={faInstagram} size='2xl' className='px-2' />
+						<FontAwesomeIcon icon={faXTwitter} size='2xl' className='px-2' />
+						<FontAwesomeIcon icon={faYoutube} size='2xl' className='px-2' />
+					</div>
 					<div className="flex flex-col md:flex-row justify-center items-center">
-						<h3 className="px-1 md:px-3 dark:text-white">Home</h3>
-						<h3 className="px-1 md:px-3 dark:text-white">Experience</h3>
-						<h3 className="px-1 md:px-3 dark:text-white">News</h3>
-						<h3 className="px-1 md:px-3 dark:text-white">About Us</h3>
-						<h3 className="px-1 md:px-3 dark:text-white">Jobs</h3>
-						<h3 className="px-1 md:px-3 dark:text-white">Contact</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">Home</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">Experience</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">News</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">About Us</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">Jobs</h3>
+						<h3 className="px-1 font-bold md:px-3 dark:text-white">Contact</h3>
 					</div>
 					<div className="flex pt-3 justify-center items-center">
 						<h3 className="dark:text-white">
-							Created by <a href="https://github.com/repiyann">@repiyann</a>
+							Created by <a href="https://github.com/repiyann">Bhinneka Sangha Developer</a>
 						</h3>
 					</div>
 				</div>

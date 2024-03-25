@@ -54,23 +54,23 @@ function NavbarUser() {
 							alt="logo YakinKerja"
 						/>
 					</a>
-          <div className="relative pt-[2px]">
-							<input
-								type="text"
-								placeholder="What service are you looking for?"
-								className="px-3 w-[700px] text-lg rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+					<div className="relative pt-[2px]">
+						<input
+							type="text"
+							placeholder="What service are you looking for?"
+							className="px-3 w-[150px] lg:w-[700px] text-lg dark:bg-[#555555] rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+						/>
+						<button
+							type="submit"
+							className="absolute bg-[#264480] mt-[2px] pt-1 px-3 -right-[2px] top-0 rounded-r-md"
+						>
+							<FontAwesomeIcon
+								icon={faSearch}
+								className="mb-[2.5px]"
+								style={{ color: '#f2f2f2' }}
 							/>
-							<button
-								type="submit"
-								className="absolute bg-[#264480] mt-[2px] pt-1 px-3 -right-[2px] top-0 rounded-r-md"
-							>
-								<FontAwesomeIcon
-									icon={faSearch}
-                  className='mb-[2.5px]'
-									style={{ color: '#f2f2f2' }}
-								/>
-							</button>
-						</div>
+						</button>
+					</div>
 					<div className="hidden md:flex items-center">
 						<Dropdown
 							options={['Light', 'Dark', 'System']}
@@ -100,7 +100,6 @@ function NavbarUser() {
 							<FontAwesomeIcon
 								icon={faUser}
 								size="lg"
-                className=''
 							/>
 						</div>
 					</div>
