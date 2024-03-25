@@ -35,6 +35,15 @@ function Home() {
 		imageLoaded && setLoading(false)
 	}, [imageLoaded])
 
+	function scrollToHome() {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
+	function scrollToAbout() {
+		const aboutSection = document.getElementById('about')
+		aboutSection && aboutSection.scrollIntoView({ behavior: 'smooth' })
+	}
+
 	return (
 		<>
 			{loading && <Spinner />}
@@ -133,8 +142,8 @@ function Home() {
 				</div>
 			</section>
 
-			<section id="about">
-				<div className="px-5 py-20 flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:pt-5 md:pb-12 md:px-10 lg:px-[132px] md:grid md:grid-cols-2 md:gap-10">
+			<section id="about" className='pt-[70px] bg-[#f2f2f2] dark:bg-[#282828]'>
+				<div className="px-5 flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:pt-5 md:pb-12 md:px-10 lg:px-[132px] md:grid md:grid-cols-2 md:gap-10">
 					<div className="col-start-1 col-end-1 mt-5">
 						<img
 							src={aboutImage}
@@ -178,10 +187,10 @@ function Home() {
 						<FontAwesomeIcon icon={faYoutube} size='2xl' className='px-2' />
 					</div>
 					<div className="flex flex-col md:flex-row justify-center items-center">
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">Home</h3>
+						<a onClick={scrollToHome} className="px-1 font-bold md:px-3 cursor-pointer dark:text-white">Home</a>
 						<h3 className="px-1 font-bold md:px-3 dark:text-white">Experience</h3>
 						<h3 className="px-1 font-bold md:px-3 dark:text-white">News</h3>
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">About Us</h3>
+						<a onClick={scrollToAbout} className="px-1 font-bold md:px-3 cursor-pointer dark:text-white">About Us</a>
 						<h3 className="px-1 font-bold md:px-3 dark:text-white">Jobs</h3>
 						<h3 className="px-1 font-bold md:px-3 dark:text-white">Contact</h3>
 					</div>
