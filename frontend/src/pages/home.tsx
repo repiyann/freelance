@@ -163,10 +163,10 @@ function Home() {
 			</section>
 
 			<section id="footer">
-				<div className="py-5 bg-[#6986C2] dark:bg-[#264480]">
+				<div className="py-5 bg-[#6986C2] dark:bg-[#6986C2]">
 					<div className="flex flex-col justify-center items-center">
 						<h1 className="font-bold text-2xl">YakinKerja</h1>
-						<h3 className='w-[750px] text-center py-3'>
+						<h3 className='w-[750px] text-center py-3 font-thin'>
 							YakinKerja is a website that makes you get the best experience in transactions as a freelance and user.
 							Organised in such a way with innovation and interesting features.
 						</h3>
