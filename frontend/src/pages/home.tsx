@@ -16,7 +16,7 @@ import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/fre
 
 function Home() {
 	const imagesWithDescriptions = [
-		{ imageUrl: coding, description: 'Programmer' },
+		{ imageUrl: coding, description: 'Web Programmer' },
 		{ imageUrl: designer, description: 'UI/UX Designer' },
 		{ imageUrl: writer, description: 'Writter' },
 		{ imageUrl: video, description: 'Video Editor' },
