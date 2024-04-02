@@ -18,18 +18,17 @@ function ThemeDropdown({ options, onSelect, className, defaultOption }: themeDro
 
 	useEffect(() => {
 		defaultOption && !selectedOption && opened && (setSelectedOption(defaultOption), onSelect(defaultOption))
-	}, [defaultOption, onSelect, selectedOption, opened])
 
-	useEffect(() => {
 		function handleClickOutside(event: MouseEvent) {
 			dropdownRef.current && !dropdownRef.current.contains(event.target as Node) && setIsOpen(false)
 		}
 
 		document.addEventListener('mousedown', handleClickOutside)
+
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside)
 		}
-	}, [])
+	}, [defaultOption, onSelect, selectedOption, opened])
 
 	function handleOptionClick(option: string) {
 		setSelectedOption(option)
@@ -65,7 +64,7 @@ function ThemeDropdown({ options, onSelect, className, defaultOption }: themeDro
 					{options.map((option, index) => (
 						<div
 							key={index}
-							className="dark:hover:bg-[#333333] hover:bg-[#d3d3d3] rounded-lg"
+							className="hover:bg-[#d3d3d3] dark:hover:bg-[#333333] rounded-lg"
 						>
 							<button
 								onClick={() => {

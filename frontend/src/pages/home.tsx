@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 import { Card, CardContent } from '@/components/ui/card'
 import Spinner from '@/components/spinner'
 import Navbar from '@/components/navbar'
+
 import homeImage from '/images/home-image.svg'
 import aboutImage from '/images/about-image.svg'
 import coding from '/images/coding-bro.svg'
@@ -12,7 +14,6 @@ import designer from '/images/Designer-bro.svg'
 import writer from '/images/Novelist-bro.svg'
 import video from '/images/Video-bro.svg'
 import threeD from '/images/3d-bro.svg'
-import { faFacebook, faInstagram, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
 function Home() {
 	const imagesWithDescriptions = [
@@ -26,6 +27,7 @@ function Home() {
 	const [loading, setLoading] = useState(true)
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [images] = useState(imagesWithDescriptions)
+	const icons = [faFacebook, faInstagram, faXTwitter, faYoutube]
 
 	function handleImageLoad() {
 		setImageLoaded(true)
@@ -49,7 +51,7 @@ function Home() {
 			{loading && <Spinner />}
 			<Navbar />
 			<section id="home">
-				<div className="px-5 py-20 flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:pt-5 md:pb-12 md:px-10 lg:px-[132px] md:grid md:grid-cols-2 md:gap-10">
+				<div className="px-5 py-20 md:pt-5 md:pb-12 md:px-10 lg:px-[132px] flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:grid md:grid-cols-2 md:gap-10">
 					<div className="col-start-1 col-end-1 m-auto">
 						<h1 className="text-5xl font-medium mb-5 dark:text-white text-[#6986C2]">
 							<span style={{ color: '#264480', fontWeight: 700 }}> YakinKerja </span> — Freelancing Made Easy
@@ -104,9 +106,9 @@ function Home() {
 
 			<section
 				id="menu"
-				className="lg:pt-20 dark:bg-[#282828] bg-[#f2f2f2]"
+				className="bg-[#f2f2f2] dark:bg-[#282828] lg:pt-20"
 			>
-				<div className="px-5 z-[900] flex bg-[#f2f2f2] dark:bg-[#282828] justify-center flex-col items-center md:pt-5 md:pb-12 md:px-10 lg:px-[132px]">
+				<div className="px-5 md:pt-5 md:pb-12 md:px-10 lg:px-[132px] z-[900] flex bg-[#f2f2f2] dark:bg-[#282828] justify-center flex-col items-center">
 					<h1 className="text-4xl mb-5 font-semibold text-center dark:text-white">Services</h1>
 					<Carousel
 						opts={{
@@ -143,7 +145,7 @@ function Home() {
 			</section>
 
 			<section id="about" className='pt-[70px] pb-20 lg:pb-0 bg-[#f2f2f2] dark:bg-[#282828]'>
-				<div className="px-5 flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:pt-5 md:pb-12 md:px-10 lg:px-[132px] md:grid md:grid-cols-2 md:gap-10">
+				<div className="px-5 md:pt-5 md:pb-12 md:px-10 lg:px-[132px] flex bg-[#f2f2f2] dark:bg-[#282828] justify-center items-center md:grid md:grid-cols-2 md:gap-10">
 					<div className="col-start-1 col-end-1 mt-5">
 						<img
 							src={aboutImage}
@@ -175,24 +177,23 @@ function Home() {
 				<div className="py-5 bg-[#6986C2] dark:bg-[#6986C2]">
 					<div className="flex flex-col justify-center items-center">
 						<h1 className="font-bold text-2xl">YakinKerja</h1>
-						<h3 className='lg:w-[700px] text-center py-3 font-thin'>
+						<h3 className='text-center py-3 font-thin lg:w-[700px] '>
 							YakinKerja is a website that makes you get the best experience in transactions as a freelance and user.
 							Organised in such a way with innovation and interesting features.
 						</h3>
 					</div>
 					<div className="flex justify-center items-center pb-2">
-						<FontAwesomeIcon icon={faFacebook} size='2xl' className='px-2' />
-						<FontAwesomeIcon icon={faInstagram} size='2xl' className='px-2' />
-						<FontAwesomeIcon icon={faXTwitter} size='2xl' className='px-2' />
-						<FontAwesomeIcon icon={faYoutube} size='2xl' className='px-2' />
+					{icons.map((icon, i) => (
+						<FontAwesomeIcon key={i} icon={icon} size='2xl' className='px-2' />
+						))}
 					</div>
-					<div className="flex flex-col md:flex-row justify-center items-center">
-						<a onClick={scrollToHome} className="px-1 font-bold md:px-3 cursor-pointer dark:text-white">Home</a>
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">Experience</h3>
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">News</h3>
-						<a onClick={scrollToAbout} className="px-1 font-bold md:px-3 cursor-pointer dark:text-white">About Us</a>
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">Jobs</h3>
-						<h3 className="px-1 font-bold md:px-3 dark:text-white">Contact</h3>
+					<div className="flex justify-center items-center flex-col md:flex-row">
+						<a onClick={scrollToHome} className="px-1 md:px-3 font-bold cursor-pointer dark:text-white">Home</a>
+						<h3 className="px-1 md:px-3 font-bold dark:text-white">Experience</h3>
+						<h3 className="px-1 md:px-3 font-bold dark:text-white">News</h3>
+						<a onClick={scrollToAbout} className="px-1 md:px-3 font-bold cursor-pointer dark:text-white">About Us</a>
+						<h3 className="px-1 md:px-3 font-bold dark:text-white">Jobs</h3>
+						<h3 className="px-1 md:px-3 font-bold dark:text-white">Contact</h3>
 					</div>
 					<div className="flex pt-3 justify-center items-center">
 						<h3 className="dark:text-white">

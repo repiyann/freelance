@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/utils/useTheme.tsx'
 import Dropdown from './themeDropdown.tsx'
+
 import logoDark from '/images/logo-dark.svg'
 import logoLight from '/images/logo-light.svg'
 import logoMobileLight from '/images/logoMobile-light.svg'
@@ -21,17 +22,26 @@ import logoMobileDark from '/images/logoMobile-dark.svg'
 function Navbar() {
 	const { theme, setTheme, actualTheme } = useTheme()
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+	const [shadow, setShadow] = useState(false)
 
 	useEffect(() => {
 		function handleResize() {
 			setIsMobile(window.innerWidth <= 768)
 		}
 
+		function handleScroll() {
+			const show = window.scrollY > 0
+			shadow !== show && setShadow(show)
+		}
+
 		window.addEventListener('resize', handleResize)
+		document.addEventListener('scroll', handleScroll)
+		
 		return () => {
 			window.removeEventListener('resize', handleResize)
+			document.removeEventListener('scroll', handleScroll)
 		}
-	}, [])
+	}, [shadow])
 
 	function handleThemeSelect(option: string) {
 		option = option.toLowerCase();
@@ -49,7 +59,11 @@ function Navbar() {
 
 	return (
 		<>
-			<nav className="pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] shadow-lg dark:shadow-gray-900 sticky top-0 z-50">
+			<nav
+				className={`pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] dark:shadow-gray-900 sticky top-0 z-50 ${
+					shadow ? 'shadow-md' : ''
+				}`}
+			>
 				<div className="flex justify-between pb-3 md:p-0">
 					<a
 						onClick={scrollToHome}
@@ -68,7 +82,7 @@ function Navbar() {
 							alt="logo YakinKerja"
 						/>
 					</a>
-					<div className="hidden md:flex items-center">
+					<div className="hidden md:flex md:items-center">
 						<Dropdown
 							options={['Light', 'Dark', 'System']}
 							onSelect={handleThemeSelect}
@@ -78,14 +92,14 @@ function Navbar() {
 						<div>
 							<a
 								onClick={scrollToAbout}
-								className="px-3 text-lg cursor-pointer font-semibold hover:text-[#6986C2] dark:text-[#f2f2f2] dark:hover:text-[#6986C2]"
+								className="px-3 text-lg cursor-pointer font-semibold dark:text-[#f2f2f2] hover:text-[#6986C2] dark:hover:text-[#6986C2]"
 							>
 								About
 							</a>
 						</div>
 						<div>
 							<Link to={'/login'}>
-								<p className="pl-3 pr-5 text-lg cursor-pointer font-semibold hover:text-[#6986C2] dark:text-[#f2f2f2] dark:hover:text-[#6986C2]">
+								<p className="pl-3 pr-5 text-lg cursor-pointer font-semibold dark:text-[#f2f2f2] hover:text-[#6986C2] dark:hover:text-[#6986C2]">
 									Sign In
 								</p>
 							</Link>

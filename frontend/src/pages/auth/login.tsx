@@ -20,8 +20,8 @@ function LoginPage() {
 	return (
 		<>
 			{loading && <Spinner />}
-			<section className="flex flex-col md:flex-row h-screen items-center">
-				<div className="bg-indigo-600 hidden lg:flex justify-center w-full md:w-1/2 xl:w-2/3 h-screen border-r-2 dark:border-black">
+			<section className="flex flex-col h-screen items-center md:flex-row">
+				<div className="bg-indigo-600 hidden justify-center w-full h-screen md:w-1/2 lg:flex xl:w-2/3 border-r-2 dark:border-black">
 					<div className="flex items-center">
 						<img
 							src={loginImage}
@@ -30,10 +30,9 @@ function LoginPage() {
 						/>
 					</div>
 				</div>
-
-				<div className="bg-[#f2f2f2] dark:bg-[#282828] w-full md:max-w-md lg:max-w-full md:mx-auto md:w-1/2 xl:w-1/3 h-screen px-6 lg:px-16 xl:px-12 flex items-center justify-center">
+				<div className="flex items-center justify-center bg-[#f2f2f2] dark:bg-[#282828] w-full h-screen px-6 md:max-w-md md:mx-auto md:w-1/2 lg:max-w-full lg:px-16 xl:w-1/3 xl:px-12">
 					<div className="w-full h-100">
-						<h1 className="text-xl dark:text-white md:text-2xl font-bold leading-tight mt-12">
+						<h1 className="text-xl font-bold leading-tight mt-12 dark:text-white md:text-2xl">
 							Log in to your account
 						</h1>
 
@@ -90,7 +89,6 @@ function LoginPage() {
 						</div>
 					</div>
 				</div>
-
 				<nav className="absolute top-0 left-0 right-0 p-4 flex justify-between w-full">
 					<Link
 						to={'/'}
