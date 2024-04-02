@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
 import NavbarUser from '@/components/navbarUser'
 import coding from '/images/coding-bro.svg'
 import designer from '/images/Designer-bro.svg'
@@ -26,71 +27,92 @@ function Dashboard() {
 						<div className="bg-[#3333] p-32 rounded-lg"></div>
 						<div className="py-5">
 							<h3 className="text-lg font-semibold">Popular Services</h3>
-							<div className="grid grid-cols-3 gap-10 pt-2">
-								<div className="col-start-1 col-end-1">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">Mobile Developer</p>
+							<div className="grid grid-cols-3 md:gap-10 gap-2 pt-2">
+								{['Mobile Developer', 'Web Developer', 'Writer'].map((category, i) => (
+									<div
+										className={`col-start-${i + 1} col-end-${i + 2}`}
+										key={i}
+									>
+										<div className="bg-[#3333] px-5 py-2 rounded-lg">
+											<p className="flex items-center justify-center text-center text-sm md:text-base min-h-[40px] md:min-h-0">{category}</p>
+										</div>
 									</div>
-								</div>
-								<div className="col-start-2 col-end-2">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">Web Developer</p>
-									</div>
-								</div>
-								<div className="col-start-3 col-end-3">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">Writter</p>
-									</div>
-								</div>
+								))}
 							</div>
-							<div className="grid grid-cols-3 gap-10 pt-3">
-								<div className="col-start-1 col-end-1">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">3D Designer</p>
+							<div className="grid grid-cols-3 md:gap-10 gap-2 pt-3">
+								{['3D Designer', 'UI/UX Designer', 'Video Editor'].map((category, i) => (
+									<div
+										className={`col-start-${i + 1} col-end-${i + 2}`}
+										key={i}
+									>
+										<div className="bg-[#3333] px-5 py-2 rounded-lg">
+											<p className="text-center">{category}</p>
+										</div>
 									</div>
-								</div>
-								<div className="col-start-2 col-end-2">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">UI/UX Designer</p>
-									</div>
-								</div>
-								<div className="col-start-3 col-end-3">
-									<div className="bg-[#3333] px-5 py-2 rounded-lg">
-										<p className="text-center">Video Editor</p>
-									</div>
-								</div>
+								))}
 							</div>
 						</div>
-						{['Mobile Development', 'Web Development', 'Writer', 'UI/UX Designer', '3D Designer', 'Video Editor'].map((category, i) => (
-							<div
-								className="py-5"
-								key={i}
-							>
-								<div className="flex justify-between">
-									<h3 className="text-lg font-semibold">{category}</h3>
-									<h2 className="text-md">Show All</h2>
+						{['Mobile Development', 'Web Development', 'Writer', 'UI/UX Designer', '3D Designer', 'Video Editor'].map(
+							(category, i) => (
+								<div
+									className="py-5"
+									key={i}
+								>
+									<div className="flex justify-between px-2 md:px-0">
+										<h3 className="text-lg font-semibold">{category}</h3>
+										<h2 className="text-md">Show All</h2>
+									</div>
+									<div className="md:flex md:flex-wrap hidden">
+										{images.map((image, index) => (
+											<div
+												key={index}
+												className="pt-1 px-2 md:basis-1/2 lg:basis-1/5"
+											>
+												<Card className="dark:bg-[#0c0c0c33]">
+													<CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+														<img
+															src={image.imageUrl}
+															alt={`Image ${index + 1}`}
+															className="w-full h-full object-cover"
+														/>
+														<h5 className="my-4 text-xl font-semibold">{image.description}</h5>
+													</CardContent>
+												</Card>
+											</div>
+										))}
+									</div>
+									<Carousel
+										opts={{
+											align: 'start',
+											loop: true
+										}}
+										className="w-full block md:hidden"
+									>
+										<CarouselContent>
+											{images.map((image, index) => (
+												<CarouselItem
+													key={index}
+													className="md:basis-1/2 lg:basis-1/4"
+												>
+													<div className="p-1">
+														<Card className="dark:bg-[#0c0c0c33]">
+															<CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+																<img
+																	src={image.imageUrl}
+																	alt={`Image ${index + 1}`}
+																	className="w-full h-full object-cover"
+																/>
+																<h5 className="my-4 text-xl font-semibold">{image.description}</h5>
+															</CardContent>
+														</Card>
+													</div>
+												</CarouselItem>
+											))}
+										</CarouselContent>
+									</Carousel>
 								</div>
-								<div className="flex flex-wrap">
-									{images.map((image, index) => (
-										<div
-											key={index}
-											className="pt-1 px-2 md:basis-1/2 lg:basis-1/5"
-										>
-											<Card className="dark:bg-[#0c0c0c33]">
-												<CardContent className="flex flex-col aspect-square items-center justify-center p-6">
-													<img
-														src={image.imageUrl}
-														alt={`Image ${index + 1}`}
-														className="w-full h-full object-cover"
-													/>
-													<h5 className="my-4 text-xl font-semibold">{image.description}</h5>
-												</CardContent>
-											</Card>
-										</div>
-									))}
-								</div>
-							</div>
-						))}
+							)
+						)}
 					</div>
 				</div>
 			</section>
