@@ -35,7 +35,7 @@ function NavbarUser() {
 
 	return (
 		<>
-			<nav className="pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] shadow-lg dark:shadow-gray-900 sticky top-0 z-50">
+			<nav className="pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] shadow-md dark:shadow-gray-900 sticky top-0 z-50">
 				<div className="flex justify-between pb-3 md:p-0">
 					<a
 						onClick={scrollToHome}
