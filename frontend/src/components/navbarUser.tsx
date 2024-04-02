@@ -1,17 +1,28 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+	SheetClose
+} from '@/components/ui/sheet'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faBell, faMessage } from '@fortawesome/free-regular-svg-icons'
 import { useTheme } from '@/utils/useTheme.tsx'
 import Dropdown from './themeDropdown.tsx'
 import logoDark from '/images/logo-dark.svg'
 import logoLight from '/images/logo-light.svg'
 import logoMobileLight from '/images/logoMobile-light.svg'
 import logoMobileDark from '/images/logoMobile-dark.svg'
-import { faBell, faMessage } from '@fortawesome/free-regular-svg-icons'
 
 function NavbarUser() {
 	const { theme, setTheme, actualTheme } = useTheme()
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+	const icons = [faBell, faMessage, faCartShopping, faUser]
 
 	useEffect(() => {
 		function handleResize() {
@@ -25,8 +36,8 @@ function NavbarUser() {
 	}, [])
 
 	function handleThemeSelect(option: string) {
-		option = option.toLowerCase()
-		;(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
+		option = option.toLowerCase();
+		(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
 	}
 
 	function scrollToHome() {
@@ -54,7 +65,7 @@ function NavbarUser() {
 							alt="logo YakinKerja"
 						/>
 					</a>
-					<div className="relative pt-[2px]">
+					<div className="hidden md:block md:relative pt-[2px]">
 						<input
 							type="text"
 							placeholder="What service are you looking for?"
@@ -78,30 +89,69 @@ function NavbarUser() {
 							className="px-3"
 							defaultOption={theme}
 						/>
-						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
+						{icons.map((icon, i) => (
+							<div
+								className="px-3 py-1 hover:bg-[#3333] rounded-md"
+								key={i}
+							>
+								<FontAwesomeIcon
+									icon={icon}
+									size="lg"
+								/>
+							</div>
+						))}
+					</div>
+					<div className="md:hidden flex">
+						<div className="flex items-center">
 							<FontAwesomeIcon
-								icon={faBell}
+								icon={faSearch}
+								className="px-3"
 								size="lg"
 							/>
 						</div>
-						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
-							<FontAwesomeIcon
-								icon={faMessage}
-								size="lg"
-							/>
-						</div>
-						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
-							<FontAwesomeIcon
-								icon={faCartShopping}
-								size="lg"
-							/>
-						</div>
-						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
-							<FontAwesomeIcon
-								icon={faUser}
-								size="lg"
-							/>
-						</div>
+						<Sheet>
+							<SheetTrigger>
+								<FontAwesomeIcon
+									icon={faUser}
+									size="xl"
+								/>
+							</SheetTrigger>
+							<SheetContent className="h-[210px] w-[200px] rounded-bl-lg">
+								<SheetHeader>
+									<SheetTitle>YakinKerja</SheetTitle>
+									<SheetDescription>
+										<SheetClose>
+											<a
+												className="text-lg"
+												onClick={scrollToHome}
+											>
+												Home
+											</a>
+										</SheetClose>
+									</SheetDescription>
+									<SheetDescription>
+										<SheetClose>
+											<a
+												className="text-lg"
+												onClick={scrollToHome}
+											>
+												About
+											</a>
+										</SheetClose>
+									</SheetDescription>
+									<SheetDescription>
+										<Link to={'/login'}>
+											<p className="text-lg cursor-pointer hover:text-[#6986C2] dark:hover:text-[#6986C2]">Sign In</p>
+										</Link>
+									</SheetDescription>
+									<SheetDescription>
+										<Link to={'/register'}>
+											<p className="text-lg cursor-pointer hover:text-[#6986C2] dark:hover:text-[#6986C2]">Sign Up</p>
+										</Link>
+									</SheetDescription>
+								</SheetHeader>
+							</SheetContent>
+						</Sheet>
 					</div>
 				</div>
 			</nav>
