@@ -53,8 +53,8 @@ function NavbarUser() {
 	}, [shadow])
 
 	function handleThemeSelect(option: string) {
-		option = option.toLowerCase()
-		;(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
+		option = option.toLowerCase();
+		(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
 	}
 
 	function scrollToHome() {
@@ -105,9 +105,8 @@ function NavbarUser() {
 					</div>
 					<div className="hidden md:flex md:items-center">
 						<DropdownMenu>
-							<DropdownMenuTrigger>
+							<DropdownMenuTrigger className="mx-3">
 								<FontAwesomeIcon
-									className="px-3"
 									width={20}
 									icon={theme === 'dark' ? faMoon : theme === 'light' ? faSun : faDisplay}
 								/>
