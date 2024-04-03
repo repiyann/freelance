@@ -170,6 +170,9 @@ function NavbarUser() {
 									<DropdownMenuItem>Profile</DropdownMenuItem>
 									<DropdownMenuItem>Billing</DropdownMenuItem>
 									<DropdownMenuItem>Setting</DropdownMenuItem>
+									<DropdownMenuItem>
+										<Link to={'/'}>Log Out</Link>
+									</DropdownMenuItem>
 								</DropdownMenuContent>
 							</DropdownMenu>
 						</div>
