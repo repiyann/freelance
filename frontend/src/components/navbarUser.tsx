@@ -9,6 +9,14 @@ import {
 	SheetTrigger,
 	SheetClose
 } from '@/components/ui/sheet'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 import { faBell, faMessage } from '@fortawesome/free-regular-svg-icons'
@@ -24,7 +32,6 @@ function NavbarUser() {
 	const { theme, setTheme, actualTheme } = useTheme()
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 	const [shadow, setShadow] = useState(false)
-	const icons = [faBell, faMessage, faCartShopping, faUser]
 
 	useEffect(() => {
 		function handleResize() {
@@ -38,7 +45,7 @@ function NavbarUser() {
 
 		window.addEventListener('resize', handleResize)
 		document.addEventListener('scroll', handleScroll)
-		
+
 		return () => {
 			window.removeEventListener('resize', handleResize)
 			document.removeEventListener('scroll', handleScroll)
@@ -46,8 +53,8 @@ function NavbarUser() {
 	}, [shadow])
 
 	function handleThemeSelect(option: string) {
-		option = option.toLowerCase();
-		(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
+		option = option.toLowerCase()
+		;(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
 	}
 
 	function scrollToHome() {
@@ -58,7 +65,7 @@ function NavbarUser() {
 		<>
 			<nav
 				className={`pt-3 px-5 md:px-10 md:py-3 lg:px-28 bg-[#f2f2f2] dark:bg-[#282828] dark:shadow-gray-900 sticky top-0 z-50 ${
-					shadow ? 'shadow-md' : ''
+					shadow && 'shadow-md'
 				}`}
 			>
 				<div className="flex justify-between pb-3 md:p-0">
@@ -103,17 +110,53 @@ function NavbarUser() {
 							className="px-3"
 							defaultOption={theme}
 						/>
-						{icons.map((icon, i) => (
-							<div
-								className="px-3 py-1 hover:bg-[#3333] rounded-md"
-								key={i}
-							>
-								<FontAwesomeIcon
-									icon={icon}
-									size="lg"
-								/>
-							</div>
-						))}
+						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
+							<FontAwesomeIcon
+								icon={faBell}
+								size="lg"
+							/>
+						</div>
+						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
+							<DropdownMenu>
+								<DropdownMenuTrigger>
+									<FontAwesomeIcon
+										icon={faMessage}
+										size="lg"
+									/>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent>
+									<DropdownMenuLabel>Notification</DropdownMenuLabel>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem>Notification 1</DropdownMenuItem>
+									<DropdownMenuItem>Notification 2</DropdownMenuItem>
+									<DropdownMenuItem>Notification 3</DropdownMenuItem>
+									<DropdownMenuItem>Notification 4</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						</div>
+						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
+							<FontAwesomeIcon
+								icon={faCartShopping}
+								size="lg"
+							/>
+						</div>
+						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
+							<DropdownMenu>
+								<DropdownMenuTrigger>
+									<FontAwesomeIcon
+										icon={faUser}
+										size="lg"
+									/>
+								</DropdownMenuTrigger>
+								<DropdownMenuContent>
+									<DropdownMenuLabel>My Account</DropdownMenuLabel>
+									<DropdownMenuSeparator />
+									<DropdownMenuItem>Profile</DropdownMenuItem>
+									<DropdownMenuItem>Billing</DropdownMenuItem>
+									<DropdownMenuItem>Setting</DropdownMenuItem>
+								</DropdownMenuContent>
+							</DropdownMenu>
+						</div>
 					</div>
 					<div className="md:hidden flex">
 						<div className="flex items-center">
