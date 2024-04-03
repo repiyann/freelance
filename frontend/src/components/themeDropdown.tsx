@@ -60,11 +60,11 @@ function ThemeDropdown({ options, onSelect, className, defaultOption }: themeDro
 				)}
 			</div>
 			{isOpen && (
-				<div className="absolute -translate-x-[85px] z-10 bg-[#f2f2f2] dark:bg-[#282828] border dark:border-gray-500 shadow-lg rounded-lg">
+				<div className="absolute -translate-x-[85px] z-10 bg-[#fffefe] dark:bg-[#09090b] shadow-lg rounded-md">
 					{options.map((option, index) => (
 						<div
 							key={index}
-							className="hover:bg-[#d3d3d3] dark:hover:bg-[#333333] rounded-lg"
+							className="hover:bg-accent dark:hover:bg-accent rounded-md"
 						>
 							<button
 								onClick={() => {

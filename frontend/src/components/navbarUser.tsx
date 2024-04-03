@@ -19,9 +19,9 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
-import { faBell, faMessage } from '@fortawesome/free-regular-svg-icons'
+import { faBell, faMessage, faSun } from '@fortawesome/free-regular-svg-icons'
+import { faDisplay, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { useTheme } from '@/utils/useTheme.tsx'
-import Dropdown from './themeDropdown.tsx'
 
 import logoDark from '/images/logo-dark.svg'
 import logoLight from '/images/logo-light.svg'
@@ -104,12 +104,29 @@ function NavbarUser() {
 						</button>
 					</div>
 					<div className="hidden md:flex md:items-center">
-						<Dropdown
-							options={['Light', 'Dark', 'System']}
-							onSelect={handleThemeSelect}
-							className="px-3"
-							defaultOption={theme}
-						/>
+						<DropdownMenu>
+							<DropdownMenuTrigger>
+								<FontAwesomeIcon
+									className="px-3"
+									width={20}
+									icon={theme === 'dark' ? faMoon : theme === 'light' ? faSun : faDisplay}
+								/>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align="end">
+								{['Light', 'Dark', 'System'].map((option, index) => (
+									<DropdownMenuItem
+										onSelect={() => handleThemeSelect(option)}
+										key={index}
+									>
+										<FontAwesomeIcon
+											className={`${option === 'Dark' ? 'pr-2 pt-[2px] pl-1' : 'pr-2'}`}
+											icon={option === 'Dark' ? faMoon : option === 'Light' ? faSun : faDisplay}
+										/>
+										{option}
+									</DropdownMenuItem>
+								))}
+							</DropdownMenuContent>
+						</DropdownMenu>
 						<div className="px-3 py-1 hover:bg-[#3333] rounded-md">
 							<FontAwesomeIcon
 								icon={faBell}
@@ -124,7 +141,7 @@ function NavbarUser() {
 										size="lg"
 									/>
 								</DropdownMenuTrigger>
-								<DropdownMenuContent>
+								<DropdownMenuContent align="end">
 									<DropdownMenuLabel>Notification</DropdownMenuLabel>
 									<DropdownMenuSeparator />
 									<DropdownMenuItem>Notification 1</DropdownMenuItem>
@@ -148,7 +165,7 @@ function NavbarUser() {
 										size="lg"
 									/>
 								</DropdownMenuTrigger>
-								<DropdownMenuContent>
+								<DropdownMenuContent align="end">
 									<DropdownMenuLabel>My Account</DropdownMenuLabel>
 									<DropdownMenuSeparator />
 									<DropdownMenuItem>Profile</DropdownMenuItem>

@@ -9,8 +9,15 @@ import {
 	SheetTrigger,
 	SheetClose
 } from '@/components/ui/sheet'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faDisplay, faMoon } from '@fortawesome/free-solid-svg-icons'
+import { faSun } from '@fortawesome/free-regular-svg-icons'
 import { useTheme } from '@/utils/useTheme.tsx'
 import Dropdown from './themeDropdown.tsx'
 
@@ -36,7 +43,7 @@ function Navbar() {
 
 		window.addEventListener('resize', handleResize)
 		document.addEventListener('scroll', handleScroll)
-		
+
 		return () => {
 			window.removeEventListener('resize', handleResize)
 			document.removeEventListener('scroll', handleScroll)
@@ -44,8 +51,8 @@ function Navbar() {
 	}, [shadow])
 
 	function handleThemeSelect(option: string) {
-		option = option.toLowerCase();
-		(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
+		option = option.toLowerCase()
+		;(option === 'light' || option === 'dark' || option === 'system') && setTheme(option)
 	}
 
 	function scrollToHome() {
@@ -83,12 +90,29 @@ function Navbar() {
 						/>
 					</a>
 					<div className="hidden md:flex md:items-center">
-						<Dropdown
-							options={['Light', 'Dark', 'System']}
-							onSelect={handleThemeSelect}
-							className="px-3"
-							defaultOption={theme}
-						/>
+						<DropdownMenu>
+							<DropdownMenuTrigger>
+								<FontAwesomeIcon
+									className="px-3"
+									width={20}
+									icon={theme === 'dark' ? faMoon : theme === 'light' ? faSun : faDisplay}
+								/>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align="end">
+								{['Light', 'Dark', 'System'].map((option, index) => (
+									<DropdownMenuItem
+										onSelect={() => handleThemeSelect(option)}
+										key={index}
+									>
+										<FontAwesomeIcon
+											className={`${option === 'Dark' ? 'pr-2 pt-[2px] pl-1' : 'pr-2'}`}
+											icon={option === 'Dark' ? faMoon : option === 'Light' ? faSun : faDisplay}
+										/>
+										{option}
+									</DropdownMenuItem>
+								))}
+							</DropdownMenuContent>
+						</DropdownMenu>
 						<div>
 							<a
 								onClick={scrollToAbout}
