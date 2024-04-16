@@ -1,5 +1,7 @@
 # ReactJS Frontend: Freelance
 
+![image](https://github.com/repiyann/freelance/assets/92260886/76af716e-fa4d-457b-ae18-0e9312fcf3ff)
+
 ## Description
 
 ReactJS + MySQL to create a Freelance page with TypeScript
